@@ -468,3 +468,41 @@ tbody tr:hover {
     #starting-five { padding-top: 2rem; padding-bottom: 2rem; }
     #starting-five .player-photo { height: 260px; }
 }
+/* ---- RESPONSIVE FIX UNTUK LAYAR HP ---- */
+@media (max-width: 768px) {
+    /* 1. Atur judul section agar ukurannya proporsional di HP */
+    .section-title {
+        font-size: 2.2rem !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* 2. Judul utama di paling atas biar gak terlalu raksasa */
+    .main-title {
+        font-size: 2.5rem !important;
+    }
+
+    /* 3. Maksa kartu Starting Five jadi 1 atau 2 kolom saja di HP, biar gak dempet-dempetan */
+    #starting-five .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    #starting-five .col {
+        flex: 0 0 100% !important; /* Ubah ke 50% jika ingin 2 kolom sejajar di HP */
+        max-width: 100% !important;
+        margin-bottom: 15px;
+    }
+
+    /* 4. Sesuaikan tinggi foto pemain di HP agar pas */
+    .player-photo {
+        height: 380px !important; /* Tetap tinggi dan tegap di HP */
+        object-fit: cover !important;
+    }
+
+    /* 5. Kurangi padding section agar tidak terlalu banyak ruang kosong di HP */
+    section {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+}
