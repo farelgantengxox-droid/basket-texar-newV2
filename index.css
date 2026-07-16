@@ -1,0 +1,470 @@
+/* ---- VARIABEL & GLOBAL STYLING ---- */
+:root {
+    --bg-black: #030712;
+    --bg-navy: #0B192C;
+    --bg-dark-blue: #1E3E62;
+    --text-gold: #FFD700;
+    --text-gold-hover: #FFC000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(255, 215, 0, 0.12), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(30, 62, 98, 0.35), transparent 30%),
+        var(--bg-black);
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Tipografi Khas Sporty */
+.logo-text, .main-title, .section-title, .player-name, .player-number, th {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+}
+
+.section-title {
+    font-size: 3.5rem;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--text-gold), transparent);
+    border-radius: 999px;
+}
+
+.text-gold {
+    color: var(--text-gold) !important;
+}
+
+/* Custom Navbar */
+.custom-navbar {
+    background: rgba(11, 25, 44, 0.9) !important;
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.35);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand .logo-mark {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.custom-navbar .nav-link {
+    font-weight: 600;
+    transition: 0.3s;
+    position: relative;
+}
+.custom-navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0.5rem;
+    bottom: 0.2rem;
+    width: 0;
+    height: 2px;
+    background: var(--text-gold);
+    transition: width 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover::after,
+.custom-navbar .nav-link:focus::after {
+    width: calc(100% - 1rem);
+}
+
+.custom-navbar .nav-link:hover {
+    color: var(--text-gold) !important;
+}
+
+/* ---- 2. HERO SECTION (Latar Garis Lapangan) ---- */
+.hero-section {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background-image: linear-gradient(120deg, rgba(0, 0, 0, 0.82), rgba(11, 25, 44, 0.86)), url('assets/img.lat.jpg');
+    background-repeat: no-repeat, no-repeat;
+    background-position: center center, center center;
+    background-size: cover, cover;
+}
+
+.hero-section::before,
+.hero-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.hero-section::before {
+    background-image: radial-gradient(circle at 20% 20%, rgba(255, 215, 0, 0.15), transparent 18%);
+}
+
+.hero-section::after {
+    background-image: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%);
+    transform: translateX(-100%);
+    animation: shimmer 7s linear infinite;
+}
+
+.hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.45;
+    animation: pulse 8s ease-in-out infinite;
+}
+
+.hero-glow-1 {
+    width: 240px;
+    height: 240px;
+    top: -40px;
+    right: 8%;
+    background: rgba(255, 215, 0, 0.3);
+}
+
+.hero-glow-2 {
+    width: 300px;
+    height: 300px;
+    bottom: -60px;
+    left: 5%;
+    background: rgba(30, 62, 98, 0.45);
+    animation-delay: -3s;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 0.45rem 0.95rem;
+    border: 1px solid rgba(255, 215, 0, 0.45);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    font-size: 0.85rem;
+    letter-spacing: 0.25rem;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+}
+
+/* Efek Garis Lingkaran Tengah Lapangan */
+.court-line-overlay {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border: 3px dashed rgba(255, 215, 0, 0.16);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: rotate 18s linear infinite;
+}
+
+.main-title {
+    font-size: clamp(2.6rem, 5vw, 5rem);
+    text-shadow: 3px 6px 15px rgba(0, 0, 0, 0.8);
+    line-height: 0.95;
+}
+
+.btn-gold {
+    background: linear-gradient(135deg, var(--text-gold), var(--text-gold-hover));
+    color: var(--bg-black);
+    border: none;
+    transition: 0.3s;
+    box-shadow: 0 10px 24px rgba(255, 215, 0, 0.28);
+}
+
+.btn-gold:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 14px 30px rgba(255, 215, 0, 0.35);
+}
+
+/* ---- 3. ABOUT & DIAGONAL BORDER ---- */
+.bg-navy { background-color: var(--bg-navy); }
+.bg-dark-blue { background-color: var(--bg-dark-blue); }
+
+.diagonal-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 18px;
+    background: linear-gradient(90deg, transparent, var(--text-gold), transparent);
+    transform: skewY(-1.2deg);
+    transform-origin: bottom left;
+    z-index: 10;
+}
+
+/* ---- 4. STARTING FIVE (Premium Cards) ---- */
+.lineup-card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.35s ease;
+    background: rgba(11, 25, 44, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+}
+
+.lineup-card:hover {
+    transform: translateY(-12px) scale(1.01);
+    border-color: var(--text-gold);
+    box-shadow: 0 20px 45px rgba(255, 215, 0, 0.2);
+}
+
+/* Badge Posisi (G, F, C) di pojok kiri atas kartu */
+.position-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--text-gold), var(--text-gold-hover));
+    color: var(--bg-black);
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    z-index: 2;
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.25);
+}
+
+.player-photo {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    transition: transform 0.45s ease;
+}
+
+.lineup-card:hover .player-photo {
+    transform: scale(1.04);
+}
+
+.player-name {
+    font-size: 1.8rem;
+    margin-bottom: 0.2rem;
+    color: #ffffff; /* white so names stand out against dark cards */
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.player-number {
+    font-size: 1.25rem;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+}
+
+.player-desc {
+    font-size: 0.93rem;
+    line-height: 1.6;
+    color: #cad4e0 !important;
+}
+
+/* ---- 5. ACTIVE ROSTER (Efek Hitam Putih ➡️ Berwarna) ---- */
+.roster-item {
+    padding: 1rem 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.roster-item:hover {
+    transform: translateY(-4px);
+}
+
+.roster-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.14);
+    filter: grayscale(100%);
+    transition: all 0.35s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.roster-item:hover .roster-img {
+    filter: grayscale(0%);
+    border-color: var(--text-gold);
+    transform: scale(1.08) rotate(2deg);
+}
+
+.roster-item:hover h6 {
+    color: var(--text-gold);
+}
+
+/* ---- 6. BEHIND THE COURT (Masonry Gallery) ---- */
+.gallery-wrapper {
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: 0.35s ease;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+    position: relative;
+}
+
+.gallery-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(11, 25, 44, 0.22) 100%);
+    transition: 0.3s ease;
+}
+
+.gallery-wrapper {
+    overflow: hidden;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: 0.35s ease;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+    position: relative;
+    aspect-ratio: 4 / 3; /* enforce uniform tile ratio */
+    height: auto;
+    display: block;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+}
+
+.gallery-wrapper:hover {
+    border-color: var(--text-gold);
+    transform: translateY(-6px);
+}
+
+.gallery-wrapper:hover .gallery-img {
+    transform: scale(1.08);
+}
+
+/* ---- 7. COURT SCHEDULE & FOOTER ---- */
+.schedule-table-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(11, 25, 44, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+.border-gold {
+    border: 1px solid rgba(255, 215, 0, 0.45) !important;
+}
+
+.table-dark th,
+.table-dark td {
+    padding: 1rem;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: rgba(255, 215, 0, 0.12);
+}
+
+.hover-link {
+    transition: 0.3s;
+}
+
+.hover-link:hover {
+    color: var(--text-gold) !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.45);
+    transform: translateY(-2px);
+}
+
+/* Responsive Fixes untuk layar HP */
+@media (max-width: 768px) {
+    .main-title { font-size: 2.8rem; }
+    .section-title { font-size: 2.5rem; }
+    .player-photo { height: 260px; }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.42; }
+    50% { transform: scale(1.08); opacity: 0.7; }
+}
+
+@keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ---- STARTING FIVE: modern background + card accents ---- */
+#starting-five {
+    position: relative;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    background: linear-gradient(180deg, rgba(3,7,18,0.6), rgba(11,25,44,0.95));
+    background-image: repeating-linear-gradient(135deg, rgba(255,215,0,0.02) 0 6px, transparent 6px 48px);
+    overflow: hidden;
+}
+
+#starting-five::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 8% 20%, rgba(255,215,0,0.04), transparent 12%), radial-gradient(circle at 92% 80%, rgba(30,62,98,0.04), transparent 15%);
+    pointer-events: none;
+}
+
+#starting-five .lineup-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(11,25,44,0.6));
+    border: 1px solid rgba(255,215,0,0.06);
+}
+
+#starting-five .lineup-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 6px;
+    background: linear-gradient(90deg, rgba(255,215,0,0.95), rgba(255,215,0,0.25));
+    mix-blend-mode: screen;
+}
+
+#starting-five .card-body {
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,0.36));
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+#starting-five .position-tag {
+    box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+}
+
+@media (max-width: 768px) {
+    #starting-five { padding-top: 2rem; padding-bottom: 2rem; }
+    #starting-five .player-photo { height: 260px; }
+}
